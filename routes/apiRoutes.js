@@ -6,7 +6,6 @@ module.exports = function (router) {
     // get last workout
     router.get('/api/workouts', (req, res) => {
         db.Workout.find({})
-            // .populate('exercises')
             .then(workouts => res.json(workouts))
             .catch(err => res.json(err));
     });
@@ -30,7 +29,10 @@ module.exports = function (router) {
 
     // get workouts in range
     router.get('/api/workouts/range', (req, res) => {
-        
+        db.Workout.find({})
+            .then(workouts => res.json(workouts))
+            .catch(err => res.json(err));
+
     })
 
 };
