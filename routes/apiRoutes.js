@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const db = require('../models');
-const { mongo } = require('mongoose');
+const mongojs = require('mongojs');
 
 module.exports = function (router) {
     // get last workout
@@ -11,15 +11,21 @@ module.exports = function (router) {
             .catch(err => res.json(err));
     });
 
-    // add an exercise
-    router.put('/api/workouts/:id', ({ body }, res) => {
-        db.Exercise.create(body)
-            .then(({ _id }) => {
-                db.Workout.findOneAndUpdate({ _id: _id }, { $push: { excersise: body.id } })
-                .then(excersise => res.json(excersise))
-                .catch(err => res.json(err))
-            });
+    // add exercise
+    router.put('/api/workouts/:id', ({ body, params }, res) => {
+        db.Workout.findOneAndUpdate(
+            { _id: params.id },
+            { $push: { 'exercises': body } }, {new: true })
+            .then(exercise => res.json(exercise))
+            .catch(err => res.json(err));
+
     });
 
+    // create workout
+    router.post('/api/workouts', ({ body }, res) => {
+        db.Workout.create(body)
+            .then(workout => res.json(workout))
+            .catch(err => res.json(err));
+    });
 
 };

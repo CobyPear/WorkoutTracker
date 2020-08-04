@@ -1,6 +1,10 @@
 const express = require('express');
 const logger = require('morgan');
 const mongoose = require('mongoose');
+const options = {
+    useFindAndModify: false,
+    useNewUrlParser: true
+}
 
 const PORT = process.env.PORT || 8080;
 
@@ -12,7 +16,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
+mongoose.set('useFindAndModify', false);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", options);
 
 // --------------------------------------------------------------------------------------------
 // routes here
