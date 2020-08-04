@@ -28,4 +28,9 @@ module.exports = function (router) {
             .catch(err => res.json(err));
     });
 
+    // get workouts in range
+    router.get('/api/workouts/range', (req, res) => {
+        
+    })
+
 };
