@@ -1,5 +1,5 @@
 let mongoose = require("mongoose");
-let db = require("../models") || require('./models');
+let db = require("../models/Index") || require('./models');
 mongoose.connect(process.env.MONGOATLAS_URI || "mongodb://localhost/workout", options);
 
 let workoutSeed = [
