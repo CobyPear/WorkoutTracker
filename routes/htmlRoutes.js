@@ -3,6 +3,10 @@ const router = require('express').Router();
 
 module.exports = function(router){
     // get route for /exercise
+    router.get("/", (req, res) => {
+        res.sendFile(path.join(__dirname, '../public/index.html'))
+    });
+
     router.get("/exercise", (req, res) => {
         res.sendFile(path.join(__dirname, '../public/exercise.html'))
     });
