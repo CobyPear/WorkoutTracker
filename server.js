@@ -16,7 +16,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-mongoose.set('useFindAndModify', false);
 mongoose.connect(process.env.MONGOATLAS_URI || "mongodb://localhost/workout", options);
 
 // --------------------------------------------------------------------------------------------
