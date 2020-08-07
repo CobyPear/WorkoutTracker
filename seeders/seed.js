@@ -1,5 +1,9 @@
 let mongoose = require("mongoose");
 let db = require("../models/Index") || require('./models');
+const options = {
+  useFindAndModify: false,
+  useNewUrlParser: true
+}
 mongoose.connect(process.env.MONGOATLAS_URI || "mongodb://localhost/workout", options);
 
 let workoutSeed = [
