@@ -17,7 +17,6 @@ module.exports = function (router) {
             { $push: { 'exercises': body } }, {new: true })
             .then(exercise => res.json(exercise))
             .catch(err => res.json(err));
-
     });
 
     // create workout
@@ -34,5 +33,4 @@ module.exports = function (router) {
             .catch(err => res.json(err));
 
     })
-
 };
