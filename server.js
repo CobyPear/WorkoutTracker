@@ -20,9 +20,10 @@ mongoose.connect(process.env.MONGOATLAS_URI || "mongodb://localhost/workout", op
 
 // --------------------------------------------------------------------------------------------
 // routes here
-require('./routes/htmlRoutes.js')(app)
-require('./routes/apiRoutes.js')(app)
-
+const htmlRoutes = require('./routes/htmlRoutes.js')
+const apiRoutes = require('./routes/apiRoutes.js')
+app.use(htmlRoutes)
+app.use(apiRoutes)
 
 
 // Start the server

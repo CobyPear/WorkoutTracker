@@ -1,5 +1,5 @@
 let mongoose = require("mongoose");
-let db = require("../models/Index") || require('./models');
+let db = require("../models/Index");
 const options = {
   useFindAndModify: false,
   useNewUrlParser: true
