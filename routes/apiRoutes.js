@@ -4,7 +4,6 @@ const mongojs = require('mongojs');
 
 // get last workout
 router.get('/api/workouts', (req, res) => {
-    console.log(find)
     db.Workout.find({})
     .then(workouts => res.json(workouts))
     .catch(err => res.json(err));
