@@ -21,7 +21,6 @@ async function initWorkout() {
 
 function tallyExercises(exercises) {
   const tallied = exercises.reduce((acc, curr) => {
-    acc.totalDuration = (acc.totalDuration || 0) + curr.duration; // 
     if (curr.type === "resistance") {
       acc.totalWeight = (acc.totalWeight || 0) + curr.weight;
       acc.totalSets = (acc.totalSets || 0) + curr.sets;
@@ -61,6 +60,7 @@ function renderWorkoutSummary(summary) {
   Object.keys(summary).forEach(key => {
     const p = document.createElement("p");
     const strong = document.createElement("strong");
+    console.log(summary)
 
     strong.textContent = workoutKeyMap[key];
     const textNode = document.createTextNode(`: ${summary[key]}`);
